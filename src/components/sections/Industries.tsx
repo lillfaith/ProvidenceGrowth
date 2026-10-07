@@ -13,12 +13,12 @@ export function Industries() {
         {industries.list.map((industry) => (
           <li
             key={industry.name}
-            className="flex items-center gap-3.5 rounded-2xl border border-line bg-surface px-4 py-4 shadow-soft transition-colors hover:border-accent/40 sm:px-5 sm:py-5"
+            className="flex min-w-0 items-center gap-3 rounded-2xl border border-line bg-surface px-3.5 py-4 shadow-soft transition-colors hover:border-accent/40 sm:gap-3.5 sm:px-5 sm:py-5"
           >
             <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-accent-soft text-accent">
               <Icon name={industry.icon} className="h-5 w-5" />
             </span>
-            <span className="text-[0.9375rem] leading-tight font-semibold tracking-[-0.01em] sm:text-base">{industry.name}</span>
+            <span className="min-w-0 text-[0.9375rem] leading-tight font-semibold tracking-[-0.01em] sm:text-base">{industry.name}</span>
           </li>
         ))}
       </Reveal>

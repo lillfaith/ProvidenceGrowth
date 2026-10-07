@@ -9,7 +9,7 @@
 // ── Brand, contact & links ──────────────────────────────────────────────────
 
 export const brand = {
-  name: 'Arcline Growth',
+  name: 'Providence Growth',
   /** Short line used in the footer and structured data. */
   tagline: 'Practical content systems that turn attention into visits, calls and orders for local service businesses.',
   /** Shown in footer and used in schema markup. Leave a value empty to hide it. */
@@ -43,7 +43,7 @@ export const brand = {
 
 export const founder = {
   name: 'Lillie Jahr',
-  role: 'Founder, Arcline Growth',
+  role: 'Founder, Providence Growth',
   initials: 'LJ',
   photo: '',
   location: 'Dawsonville, Georgia',
@@ -59,9 +59,9 @@ export const founder = {
 // ── SEO ─────────────────────────────────────────────────────────────────────
 
 export const seo = {
-  title: 'Arcline Growth — Free Growth Audit for Local Service Businesses',
+  title: 'Providence Growth — Free Growth Audit for Local Service Businesses',
   description:
-    'Your business is better than your online presence makes it look. Arcline Growth handles short-form content, your Google Business Profile, reviews, follow-up and website improvements for established local service businesses. $995/month, cancel anytime.',
+    'Your business is better than your online presence makes it look. Providence Growth handles short-form content, your Google Business Profile, reviews, follow-up and website improvements for established local service businesses. $995/month, cancel anytime.',
   /** Fallback when NEXT_PUBLIC_SITE_URL is not set. */
   defaultSiteUrl: 'https://www.example.com',
   keywords: [
@@ -185,7 +185,7 @@ export const system = {
 
 export const pricing = {
   eyebrow: 'Pricing',
-  label: 'Arcline Growth',
+  label: 'Providence Growth',
   price: '$995',
   period: '/month',
   /** Plain number used in schema markup. Keep in sync with `price`. */
@@ -343,7 +343,7 @@ export const positioning = {
   agencyIntro: 'Most agencies sell deliverables:',
   agencyDeliverables: ['“12 posts.”', '“4 reels.”', '“Google management.”'],
   approach:
-    'Arcline Growth starts somewhere else: finding where your business is currently losing potential customers — and fixing that first.',
+    'Providence Growth starts somewhere else: finding where your business is currently losing potential customers — and fixing that first.',
   examples: [
     { problem: 'Not enough attention', fix: 'Improve content' },
     { problem: 'People visit but don’t contact the business', fix: 'Improve conversion' },

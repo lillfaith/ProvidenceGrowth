@@ -1,6 +1,6 @@
-# Arcline Growth — website
+# Providence Growth — website
 
-A one-page lead-generation site for Arcline Growth, built with Next.js (App Router),
+A one-page lead-generation site for Providence Growth, built with Next.js (App Router),
 TypeScript and Tailwind CSS. There is no UI library, animation library or icon package. Every page
 is prerendered as static HTML.
 
@@ -129,7 +129,7 @@ from the content file.
 1. In Netlify: Add new site → Import an existing project → GitHub → this repository.
    Netlify detects Next.js; `netlify.toml` sets the build command and Node version.
 2. Site configuration → Environment variables:
-   - `NEXT_PUBLIC_SITE_URL`: the public address, e.g. `https://arclinegrowth.com`
+   - `NEXT_PUBLIC_SITE_URL`: the public address, e.g. `https://providencegrowth.com`
    - optional: `NEXT_PUBLIC_GA_ID`, `NEXT_PUBLIC_META_PIXEL_ID`
 3. Deploy. Every push to `main` redeploys automatically.
 4. Custom domain: Domain management → Add a domain. HTTPS is set up for you. Update

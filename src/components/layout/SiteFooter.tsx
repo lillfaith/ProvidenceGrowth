@@ -22,7 +22,7 @@ export function SiteFooter({ showNav = true }: { showNav?: boolean }) {
     // Bottom padding leaves room for the mobile sticky CTA bar.
     <footer className="border-t border-line bg-canvas pb-28 pt-14 md:pb-12">
       <Container>
-        <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
+        <div className="flex flex-col gap-10 lg:flex-row lg:items-start lg:justify-between">
           <div className="max-w-sm">
             <Link href="/" className="rounded-lg">
               <Logo />
@@ -51,7 +51,7 @@ export function SiteFooter({ showNav = true }: { showNav?: boolean }) {
               <ul className="mt-4 space-y-2.5 text-[0.9375rem] text-ink-soft">
                 {email ? (
                   <li>
-                    <a href={`mailto:${email}`} className="transition-colors hover:text-accent">
+                    <a href={`mailto:${email}`} className="break-all transition-colors hover:text-accent">
                       {email}
                     </a>
                   </li>
