@@ -1,4 +1,4 @@
-import { brand, faq, pricing, seo, system } from '@/content/site';
+import { brand, faq, founder, pricing, seo, system } from '@/content/site';
 import { SITE_URL } from '@/lib/site-url';
 
 /** ProfessionalService + FAQPage JSON-LD, built entirely from site content. */
@@ -17,6 +17,7 @@ export function StructuredData() {
     ...(brand.contact.phone ? { telephone: brand.contact.phone } : {}),
     ...(brand.contact.serviceArea ? { areaServed: brand.contact.serviceArea } : {}),
     ...(sameAs.length ? { sameAs } : {}),
+    founder: { '@type': 'Person', name: founder.name, jobTitle: founder.role },
     priceRange: `${pricing.price}${pricing.period}`,
     makesOffer: {
       '@type': 'Offer',

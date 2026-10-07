@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { caseStudy, type CaseStudyMedia } from '@/content/site';
+import { brand, caseStudy, founder, type CaseStudyMedia } from '@/content/site';
 import { Icon, type IconName } from '@/components/ui/Icon';
 import { Reveal } from '@/components/ui/Reveal';
 import { Section } from '@/components/ui/Section';
@@ -10,6 +10,7 @@ const KIND_ICON: Record<CaseStudyMedia['kind'], IconName> = {
   social: 'phone',
   website: 'browser',
   video: 'video',
+  document: 'chart',
 };
 
 const SHOW_EDIT_HINTS = process.env.NODE_ENV !== 'production';
@@ -37,13 +38,17 @@ function MediaFrame({ item, className }: { item: CaseStudyMedia; className: stri
           aria-label={item.alt ?? item.label}
         />
       ) : item.src ? (
-        <Image
-          src={item.src}
-          alt={item.alt ?? item.label}
-          fill
-          sizes="(min-width: 1024px) 50vw, 100vw"
-          className="object-cover"
-        />
+        <div className={`absolute inset-0 ${item.fit === 'contain' ? 'bg-sand p-4 sm:p-6' : ''}`}>
+          <div className="relative h-full w-full">
+            <Image
+              src={item.src}
+              alt={item.alt ?? item.label}
+              fill
+              sizes="(min-width: 1024px) 50vw, 100vw"
+              className={item.fit === 'contain' ? 'object-contain drop-shadow-[0_8px_20px_rgb(27_27_25/0.18)]' : 'object-cover'}
+            />
+          </div>
+        </div>
       ) : (
         // Placeholder until real media is added in src/content/site.ts.
         <div className="frame-hatch absolute inset-0 flex flex-col items-center justify-center gap-3 bg-gradient-to-br from-canvas to-sand p-6 text-center">
@@ -84,9 +89,21 @@ export function CaseStudy() {
                 <dd className="order-1 font-display text-5xl font-semibold tracking-[-0.045em] text-accent sm:text-6xl">
                   {metric.value}
                 </dd>
+                {metric.note ? <dd className="order-3 mt-2 text-sm leading-snug text-muted">{metric.note}</dd> : null}
               </div>
             ))}
           </dl>
+          <dl className="mt-4 grid grid-cols-2 divide-line overflow-hidden rounded-2xl border border-line bg-surface sm:grid-cols-4 sm:divide-x">
+            {caseStudy.stats.map((stat) => (
+              <div key={stat.label} className="flex flex-col px-5 py-4">
+                <dt className="order-2 mt-1 text-[0.8125rem] leading-snug text-muted">{stat.label}</dt>
+                <dd className="order-1 font-display text-2xl font-semibold tabular-nums tracking-[-0.03em] text-ink">
+                  {stat.value}
+                </dd>
+              </div>
+            ))}
+          </dl>
+          <p className="mt-4 text-sm leading-relaxed text-muted">{caseStudy.context}</p>
         </Reveal>
       </div>
 
@@ -113,6 +130,24 @@ export function CaseStudy() {
         </Reveal>
       ) : null}
 
+      <div className="mt-16">
+        <Reveal className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between sm:gap-8">
+          <h3 className="font-display text-2xl font-semibold tracking-[-0.025em] sm:text-3xl">{caseStudy.insightsTitle}</h3>
+          <p className="max-w-md leading-relaxed text-muted sm:text-right">{caseStudy.insightsIntro}</p>
+        </Reveal>
+        <ol className="mt-8 grid gap-4 md:grid-cols-3">
+          {caseStudy.insights.map((insight, index) => (
+            <Reveal as="li" key={insight.title} delay={index * 80}>
+              <div className="h-full rounded-3xl border border-line bg-surface p-7 shadow-soft">
+                <span className="font-display text-sm font-semibold tabular-nums text-accent">0{index + 1}</span>
+                <h4 className="mt-3 font-display text-lg leading-snug font-semibold tracking-[-0.015em]">{insight.title}</h4>
+                <p className="mt-2 text-[0.9375rem] leading-relaxed text-muted">{insight.body}</p>
+              </div>
+            </Reveal>
+          ))}
+        </ol>
+      </div>
+
       {caseStudy.testimonials.length ? (
         <div className="mt-10 grid gap-4 md:grid-cols-2">
           {caseStudy.testimonials.map((testimonial, index) => (
@@ -135,6 +170,64 @@ export function CaseStudy() {
           production while empty).
         </p>
       ) : null}
+
+      <FounderCard />
     </Section>
+  );
+}
+
+function FounderCard() {
+  const linkedin = brand.social.linkedin;
+  return (
+    <Reveal className="mt-16">
+      <div className="grid gap-8 rounded-[2rem] border border-line bg-sand p-7 sm:p-10 lg:grid-cols-[auto_1fr_auto] lg:items-start lg:gap-12">
+        {founder.photo ? (
+          <Image
+            src={founder.photo}
+            alt={founder.name}
+            width={112}
+            height={112}
+            className="h-24 w-24 rounded-full object-cover sm:h-28 sm:w-28"
+          />
+        ) : (
+          <span
+            aria-hidden="true"
+            className="flex h-24 w-24 items-center justify-center rounded-full bg-accent font-display text-3xl font-semibold tracking-[-0.03em] text-canvas sm:h-28 sm:w-28"
+          >
+            {founder.initials}
+          </span>
+        )}
+        <div className="max-w-2xl">
+          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-accent">{founder.eyebrow}</p>
+          <h3 className="mt-3 font-display text-2xl font-semibold tracking-[-0.025em] sm:text-3xl">{founder.name}</h3>
+          <p className="mt-1 text-[0.9375rem] text-muted">
+            {founder.role} · {founder.location}
+          </p>
+          <p className="mt-5 leading-relaxed text-ink-soft">{founder.bio}</p>
+        </div>
+        <div className="lg:w-72">
+          <ul className="space-y-4">
+            {founder.credentials.map((credential) => (
+              <li key={credential.title} className="border-l-2 border-accent/30 pl-4">
+                <p className="font-semibold leading-snug text-ink">{credential.title}</p>
+                <p className="mt-0.5 text-sm leading-snug text-muted">{credential.detail}</p>
+              </li>
+            ))}
+          </ul>
+          {linkedin ? (
+            <a
+              href={linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-6 inline-flex items-center gap-2 text-[0.9375rem] font-semibold text-accent hover:text-accent-strong"
+            >
+              <Icon name="linkedin" className="h-[1.125rem] w-[1.125rem]" />
+              {founder.name} on LinkedIn
+              <span className="sr-only"> (opens in a new tab)</span>
+            </a>
+          ) : null}
+        </div>
+      </div>
+    </Reveal>
   );
 }

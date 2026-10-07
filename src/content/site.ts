@@ -11,19 +11,20 @@
 export const brand = {
   name: 'Arcline Growth',
   /** Short line used in the footer and structured data. */
-  tagline: 'Online customer-acquisition systems for established local service businesses.',
+  tagline: 'Practical content systems that turn attention into visits, calls and orders for local service businesses.',
   /** Shown in footer and used in schema markup. Leave a value empty to hide it. */
   contact: {
-    email: 'hello@yourdomain.com',
-    phone: '(555) 555-0123',
-    /** City / region you serve, e.g. "Atlanta, GA and surrounding areas". */
-    serviceArea: 'Your City, ST and surrounding areas',
+    email: 'lilliefaithj@gmail.com',
+    /** Add a business number here to show it in the footer and schema markup. */
+    phone: '',
+    /** Where you're based / the area you serve. */
+    serviceArea: 'Dawsonville, Georgia',
   },
   /** Leave a URL empty ('') to hide that icon. */
   social: {
-    instagram: 'https://instagram.com/',
-    facebook: 'https://facebook.com/',
-    linkedin: 'https://linkedin.com/',
+    instagram: '',
+    facebook: '',
+    linkedin: 'https://www.linkedin.com/in/lillianjahr',
     youtube: '',
     tiktok: '',
   },
@@ -36,12 +37,31 @@ export const brand = {
   foundedYear: 2026,
 };
 
+// ── Founder (shown in the Results section and in schema markup) ─────────────
+// Sourced from the founder's portfolio. Add `photo: '/founder.jpg'` (a file in
+// /public) to replace the initials with a headshot.
+
+export const founder = {
+  name: 'Lillie Jahr',
+  role: 'Founder, Arcline Growth',
+  initials: 'LJ',
+  photo: '',
+  location: 'Dawsonville, Georgia',
+  eyebrow: 'Who you’ll work with',
+  bio: 'Since May 2022 I’ve run marketing for Brookton Catfish School: their TikTok and short-form content, a mobile-first website, digital ordering and promotions. Every project gets the same loop: notice the gap, build the fix, put it in front of real customers, measure what happened, and improve it.',
+  credentials: [
+    { title: 'Marketing Specialist', detail: 'Brookton Catfish School · May 2022 – present' },
+    { title: 'Business Marketing', detail: 'University of North Georgia' },
+    { title: 'Designed and launched Plantdex', detail: 'A printed card deck with its own web app' },
+  ],
+};
+
 // ── SEO ─────────────────────────────────────────────────────────────────────
 
 export const seo = {
   title: 'Arcline Growth — Free Growth Audit for Local Service Businesses',
   description:
-    'Your business is better than your online presence makes it look. Short-form content, Google Business Profile, reviews, follow-up and website improvements for established local service businesses — $995/month, cancel anytime.',
+    'Your business is better than your online presence makes it look. Arcline Growth handles short-form content, your Google Business Profile, reviews, follow-up and website improvements for established local service businesses. $995/month, cancel anytime.',
   /** Fallback when NEXT_PUBLIC_SITE_URL is not set. */
   defaultSiteUrl: 'https://www.example.com',
   keywords: [
@@ -220,13 +240,15 @@ export const beforeAfter = {
 // Add testimonials as { quote, name, role } — the block stays hidden while empty.
 
 export type CaseStudyMedia = {
-  kind: 'photo' | 'social' | 'website' | 'video';
+  kind: 'photo' | 'social' | 'website' | 'video' | 'document';
   label: string;
   /** Path under /public or full URL. Empty = shows a labelled placeholder frame. */
   src?: string;
   alt?: string;
   /** For kind 'video': an MP4 under /public or a hosted URL. `src` becomes the poster. */
   videoSrc?: string;
+  /** 'contain' shows the whole image (use for documents and screenshots); default 'cover' fills the frame. */
+  fit?: 'cover' | 'contain';
 };
 
 export type Testimonial = { quote: string; name: string; role: string };
@@ -235,31 +257,68 @@ export const caseStudy = {
   eyebrow: 'Results',
   headline: 'I’ve Done This With a Real Local Business.',
   intro:
-    'Before offering this to service businesses, I built the same system for a local restaurant: content, photography, a new website with online ordering, promotions and a steady flow of new customers.',
-  businessLabel: 'Case study · Local restaurant',
+    'Brookton Catfish School is a local seafood spot that wanted stronger local awareness and a clearer path from finding them online to actually showing up. I built that path: short-form content, a mobile-first website, digital ordering, and tracking of what each post did.',
+  businessLabel: 'Brookton Catfish School · Gainesville, Georgia',
+  /** Headline numbers. Source: TikTok account analytics, 365 days, and the owner-confirmed visit count. */
   metrics: [
-    { value: '800K+', label: 'Short-form views' },
-    { value: '200+', label: 'Confirmed customers attributed to social content' },
+    { value: '835.5K', label: 'TikTok post views in 365 days', note: '' },
+    {
+      value: '200+',
+      label: 'Confirmed customer visits from TikTok',
+      note: '15+ customers mentioned TikTok at the counter',
+    },
   ],
-  experienceTitle: 'What the work covered',
+  /** Secondary numbers from the same analytics. */
+  stats: [
+    { value: '21.7K', label: 'Likes' },
+    { value: '9.2K', label: 'Profile views' },
+    { value: '7K', label: 'Shares' },
+    { value: '2,361', label: 'New followers from tracked posts' },
+  ],
+  experienceTitle: 'What I did',
   experience: [
-    'Website development',
-    'Short-form video',
-    'Photography',
-    'Online ordering',
+    'TikTok & short-form content',
+    'Photo & video strategy',
+    'Mobile-first website: menu, directions, calls, ordering',
+    'DoorDash & digital ordering setup',
     'Promotions',
-    'Customer acquisition',
+    'Post performance & customer feedback tracking',
   ],
+  insightsTitle: 'What 46 tracked posts showed',
+  insightsIntro: 'This is what a monthly report looks like: what happened, why, and what changes next.',
+  insights: [
+    {
+      title: 'Breakouts were people plus food',
+      body: 'The four best posts all opened on a busy dining room or line, then showed the food: 147K, 137K, 79K and 57K views.',
+    },
+    {
+      title: 'The average hid the real story',
+      body: 'Photo carousels averaged about twice the views of videos, but the typical post did about the same in both (around 4.2K vs 4.1K). The difference came from breakout posts.',
+    },
+    {
+      title: 'People don’t swipe far',
+      body: 'Viewers saw about 1.3–3.3 photos per carousel, even on 6–12 photo posts. So the best photos go first and filler slides get cut.',
+    },
+  ],
+  /** Shown as a footnote under the numbers. */
+  context:
+    'During the same period the restaurant also had a Chamber of Commerce ribbon cutting, Food Truck Friday events and local press coverage. That’s context for the growth, not work I’m claiming.',
   media: [
     { kind: 'photo', label: 'Restaurant photography' },
+    {
+      kind: 'document',
+      label: 'Results summary',
+      src: '/case-study/brookton-results-summary.jpg',
+      alt: 'One-page summary titled How Content Drove Real Restaurant Visits: 835.5K post views, 9.2K profile views, 21.7K likes, 7K shares, and 200+ confirmed customer visits from TikTok.',
+      fit: 'contain',
+    },
     { kind: 'video', label: 'Short-form video' },
-    { kind: 'social', label: 'Social media results' },
     { kind: 'website', label: 'Website & online ordering' },
   ] satisfies CaseStudyMedia[] as CaseStudyMedia[],
   testimonials: [] as Testimonial[],
-  /* Example:
+  /* Example (use the owner's exact words):
   testimonials: [
-    { quote: 'Exact words from the owner go here.', name: 'Owner Name', role: 'Owner, Restaurant Name' },
+    { quote: 'Exact words from the owner go here.', name: 'Owner Name', role: 'Owner, Brookton Catfish School' },
   ],
   */
 };
