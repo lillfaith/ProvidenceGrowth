@@ -4,6 +4,7 @@
 
 [build.environment]
   NODE_VERSION = "22"
-  # Audit requests go to Formspree. Set NEXT_PUBLIC_LEAD_ENDPOINT to your form's
-  # URL (https://formspree.io/f/xxxxxxx) in Site configuration → Environment variables.
+  # Audit requests go to this Formspree form. The address is public by design (it ships
+  # in the page's JavaScript), so it lives here rather than in the dashboard.
   NEXT_PUBLIC_LEAD_PROVIDER = "formspree"
+  NEXT_PUBLIC_LEAD_ENDPOINT = "https://formspree.io/f/mqpepbao"

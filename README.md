@@ -62,9 +62,8 @@ success, so a lead can never vanish silently. Only an explicit `demo` fakes succ
 
 1. Create a free account at formspree.io and add a new form. Confirm the email Formspree sends you.
 2. Copy the form's endpoint, `https://formspree.io/f/xxxxxxx`.
-3. In Netlify: Site configuration → Environment variables → add `NEXT_PUBLIC_LEAD_ENDPOINT`
-   with that URL (or just the `xxxxxxx` id). `netlify.toml` already sets the provider to
-   `formspree`. Redeploy.
+3. Put that URL in `netlify.toml` as `NEXT_PUBLIC_LEAD_ENDPOINT` (it's already set to this
+   site's form, `https://formspree.io/f/mqpepbao`) and push. Netlify redeploys.
 4. Submit the form on the live site once and check that the email arrives.
 
 Supabase table (insert-only for the public key):
@@ -131,7 +130,6 @@ from the content file.
    Netlify detects Next.js; `netlify.toml` sets the build command and Node version.
 2. Site configuration → Environment variables:
    - `NEXT_PUBLIC_SITE_URL`: the public address, e.g. `https://arclinegrowth.com`
-   - `NEXT_PUBLIC_LEAD_ENDPOINT`: your Formspree form URL (see above)
    - optional: `NEXT_PUBLIC_GA_ID`, `NEXT_PUBLIC_META_PIXEL_ID`
 3. Deploy. Every push to `main` redeploys automatically.
 4. Custom domain: Domain management → Add a domain. HTTPS is set up for you. Update
