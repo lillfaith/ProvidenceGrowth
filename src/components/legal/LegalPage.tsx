@@ -25,7 +25,7 @@ export function LegalPage({ title, updated, children }: { title: string; updated
             <div className="mt-10 space-y-6 leading-relaxed text-ink-soft [&_h2]:mt-10 [&_h2]:text-xl [&_h2]:font-semibold [&_h2]:tracking-[-0.02em] [&_h2]:text-ink [&_a]:font-medium [&_a]:text-accent [&_a]:underline [&_ul]:list-disc [&_ul]:space-y-2 [&_ul]:pl-5">
               {children}
             </div>
-            </div>
+          </div>
         </Container>
       </main>
       <SiteFooter showNav={false} />
