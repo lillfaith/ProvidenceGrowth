@@ -32,7 +32,7 @@ export const brand = {
    * Optional step 2 after the audit form: a scheduling page (Calendly, Cal.com,
    * Google Calendar booking page, etc.). Leave empty to hide the booking step.
    */
-  schedulingUrl: 'https://calendly.com/your-link/growth-audit-call',
+  schedulingUrl: '',
   /** Year the business was founded, used in the footer copyright range. */
   foundedYear: 2026,
 };
