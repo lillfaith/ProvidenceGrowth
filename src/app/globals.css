@@ -85,6 +85,22 @@ html.js .reveal.is-visible {
   transform: none;
 }
 
+/* Hero entrance: pure CSS, runs on first paint with no JavaScript involved. */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 14px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.rise {
+  animation: rise 650ms var(--ease-out-soft) both;
+}
+
 /* Before/after: the "after" list ticks in one item at a time. */
 html.js .tick-in {
   opacity: 0;
@@ -112,6 +128,10 @@ html.js .is-visible .fade-dim {
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+
+  .rise {
+    animation: none;
   }
 
   html.js .reveal,

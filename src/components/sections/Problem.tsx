@@ -13,11 +13,11 @@ export function Problem() {
       <ul className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
         {problem.cards.map((card, index) => (
           <Reveal as="li" key={card.title} delay={(index % 3) * 70}>
-            <Card className="h-full p-7">
+            <Card className="h-full p-6 sm:p-7">
               <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-sand text-ink-soft">
                 <Icon name={card.icon} className="h-5 w-5" />
               </span>
-              <h3 className="mt-6 text-lg leading-snug font-semibold tracking-[-0.015em]">{card.title}</h3>
+              <h3 className="mt-5 text-lg leading-snug sm:mt-6 font-semibold tracking-[-0.015em]">{card.title}</h3>
               <p className="mt-2.5 leading-relaxed text-muted">{card.body}</p>
             </Card>
           </Reveal>

@@ -30,7 +30,7 @@ export function SiteFooter({ showNav = true }: { showNav?: boolean }) {
             <p className="mt-4 text-[0.9375rem] leading-relaxed text-muted">{brand.tagline}</p>
           </div>
 
-          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:gap-16">
+          <div className={`grid grid-cols-1 gap-8 md:gap-16 ${showNav ? "sm:grid-cols-2" : ""}`}>
             {showNav ? (
               <nav aria-label="Footer">
                 <h2 className="text-xs font-semibold uppercase tracking-[0.16em] text-muted">Explore</h2>
