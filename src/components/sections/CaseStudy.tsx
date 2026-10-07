@@ -26,7 +26,11 @@ const SLOT_CLASSES = [
 function MediaFrame({ item, className }: { item: CaseStudyMedia; className: string }) {
   const hasMedia = Boolean(item.src || item.videoSrc);
   return (
-    <figure className={`group relative overflow-hidden rounded-3xl border border-line bg-surface shadow-soft ${className}`}>
+    <figure
+      className={`group relative overflow-hidden rounded-3xl border border-line bg-surface shadow-soft ${
+        item.href ? 'transition-[border-color,box-shadow] duration-300 hover:border-accent/50 hover:shadow-lift' : ''
+      } ${className}`}
+    >
       {item.kind === 'video' && item.videoSrc ? (
         <video
           className="absolute inset-0 h-full w-full object-cover"
@@ -56,11 +60,27 @@ function MediaFrame({ item, className }: { item: CaseStudyMedia; className: stri
             <Icon name={KIND_ICON[item.kind]} className="h-5 w-5" />
           </span>
           <span className="text-sm font-semibold text-ink-soft">{item.label}</span>
+          {item.href ? (
+            <span className="inline-flex items-center gap-1 whitespace-nowrap text-[0.8125rem] font-semibold text-accent">
+              Visit the live site
+              <Icon name="arrowRight" className="h-3.5 w-3.5 -rotate-45" strokeWidth={2} />
+            </span>
+          ) : null}
           {SHOW_EDIT_HINTS ? (
             <span className="hidden text-xs text-muted sm:block">Add media in src/content/site.ts → caseStudy.media</span>
           ) : null}
         </div>
       )}
+      {item.href ? (
+        // Stretched link: the whole frame opens the live site.
+        <a
+          href={item.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="absolute inset-0 z-10 rounded-3xl"
+          aria-label={`${item.label}: visit the live site (opens in a new tab)`}
+        />
+      ) : null}
       {hasMedia ? (
         <figcaption className="absolute bottom-3 left-3 rounded-full bg-night/70 px-3 py-1.5 text-xs font-semibold text-white backdrop-blur-sm">
           {item.label}
@@ -106,6 +126,33 @@ export function CaseStudy() {
           <p className="mt-4 text-sm leading-relaxed text-muted">{caseStudy.context}</p>
         </Reveal>
       </div>
+
+      {caseStudy.website.url ? (
+        <Reveal className="mt-10">
+          <a
+            href={caseStudy.website.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex max-w-full items-center gap-4 rounded-2xl border border-line-strong bg-surface py-3 pl-3 pr-5 shadow-soft transition-colors hover:border-accent"
+          >
+            <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-accent-soft text-accent">
+              <Icon name="browser" className="h-5 w-5" />
+            </span>
+            <span className="flex min-w-0 flex-col">
+              <span className="font-semibold text-ink group-hover:text-accent">{caseStudy.website.label}</span>
+              <span className="truncate text-sm text-muted">
+                {caseStudy.website.url.replace(/^https?:\/\//, '').replace(/\/$/, '')}
+              </span>
+            </span>
+            <Icon
+              name="arrowRight"
+              className="h-4 w-4 shrink-0 -rotate-45 text-accent transition-transform group-hover:translate-x-0.5"
+              strokeWidth={2}
+            />
+            <span className="sr-only"> (opens in a new tab)</span>
+          </a>
+        </Reveal>
+      ) : null}
 
       <Reveal className="mt-12">
         <h3 className="text-sm font-semibold text-ink-soft">{caseStudy.experienceTitle}</h3>

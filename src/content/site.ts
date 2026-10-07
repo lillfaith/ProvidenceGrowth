@@ -249,6 +249,8 @@ export type CaseStudyMedia = {
   videoSrc?: string;
   /** 'contain' shows the whole image (use for documents and screenshots); default 'cover' fills the frame. */
   fit?: 'cover' | 'contain';
+  /** Makes the whole frame a link, e.g. to the live website. Opens in a new tab. */
+  href?: string;
 };
 
 export type Testimonial = { quote: string; name: string; role: string };
@@ -259,6 +261,11 @@ export const caseStudy = {
   intro:
     'Brookton Catfish School is a local seafood spot that wanted stronger local awareness and a clearer path from finding them online to actually showing up. I built that path: short-form content, a mobile-first website, digital ordering, and tracking of what each post did.',
   businessLabel: 'Brookton Catfish School · Gainesville, Georgia',
+  /** The live site built for the case-study business. Leave url empty to hide the link. */
+  website: {
+    label: 'See the website I built',
+    url: 'https://brooktoncatfishschool.netlify.app/',
+  },
   /** Headline numbers. Source: TikTok account analytics, 365 days, and the owner-confirmed visit count. */
   metrics: [
     { value: '835.5K', label: 'TikTok post views in 365 days', note: '' },
@@ -313,7 +320,12 @@ export const caseStudy = {
       fit: 'contain',
     },
     { kind: 'video', label: 'Short-form video' },
-    { kind: 'website', label: 'Website & online ordering' },
+    {
+      kind: 'website',
+      label: 'Website & online ordering',
+      // Add a screenshot here, e.g. src: '/case-study/brookton-website.jpg'
+      href: 'https://brooktoncatfishschool.netlify.app/',
+    },
   ] satisfies CaseStudyMedia[] as CaseStudyMedia[],
   testimonials: [] as Testimonial[],
   /* Example (use the owner's exact words):
