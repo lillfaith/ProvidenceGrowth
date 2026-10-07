@@ -48,8 +48,8 @@ export default async function OpengraphImage() {
         <div style={{ display: 'flex', alignItems: 'center', gap: 18 }}>
           <svg width="52" height="52" viewBox="0 0 64 64">
             <rect width="64" height="64" rx="16" fill="#1f5c46" />
-            <path d="M18 44V22M18 44h12" stroke="#faf8f4" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-            <path d="M34 44l6-9 5 5 7-13" stroke="#c9ddd1" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+            <path d="M16 46 Q19 24 38 20" stroke="#faf8f4" strokeWidth="5.5" strokeLinecap="round" fill="none" />
+            <circle cx="47.5" cy="18.5" r="4.5" fill="#c9ddd1" />
           </svg>
           <div style={{ fontSize: 30, fontWeight: 600, letterSpacing: -0.5 }}>{brand.name}</div>
         </div>

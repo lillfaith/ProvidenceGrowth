@@ -1,6 +1,6 @@
-# Local Growth System — website
+# Arcline Growth — website
 
-A one-page lead-generation site for the Local Growth System offer, built with Next.js (App Router),
+A one-page lead-generation site for Arcline Growth, built with Next.js (App Router),
 TypeScript and Tailwind CSS. There is no UI library, animation library or icon package. Every page
 is prerendered as static HTML.
 
@@ -117,6 +117,5 @@ from the content file.
 
 ## Deploying
 
-Vercel: import the repository, set **Root Directory** to `local-growth-system` and add the env
-vars. Netlify and Cloudflare Pages work the same way. To deploy a plain folder of HTML, uncomment
+Vercel: import the repository, add the env vars. Netlify and Cloudflare Pages work the same way. To deploy a plain folder of HTML, uncomment
 `output: 'export'` in `next.config.ts` and upload the generated `out/` directory.

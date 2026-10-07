@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { nav } from '@/content/site';
+import { brand, nav } from '@/content/site';
 import { CtaButton } from '@/components/ui/CtaButton';
 import { Container } from '@/components/ui/Container';
 import { Icon } from '@/components/ui/Icon';
@@ -41,7 +41,7 @@ export function SiteHeader() {
       }`}
     >
       <Container className="flex h-16 items-center justify-between gap-6 sm:h-[4.5rem]">
-        <a href="#top" className="rounded-lg" aria-label="Local Growth System — back to top">
+        <a href="#top" className="rounded-lg" aria-label={`${brand.name} — back to top`}>
           <Logo />
         </a>
 

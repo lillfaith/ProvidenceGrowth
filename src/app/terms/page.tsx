@@ -24,7 +24,7 @@ export default function TermsPage() {
       </p>
       <h2>Pricing</h2>
       <p>
-        The Local Growth System is offered at {pricing.price}
+        {brand.name} is offered at {pricing.price}
         {pricing.period}, billed monthly. {pricing.terms} Final scope and pricing are confirmed in your service
         agreement.
       </p>

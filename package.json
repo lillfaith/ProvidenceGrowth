@@ -1,8 +1,8 @@
 {
-  "name": "local-growth-system",
+  "name": "arcline-growth",
   "version": "1.0.0",
   "private": true,
-  "description": "Local Growth System — one-page lead-generation site for local service businesses.",
+  "description": "Arcline Growth — one-page lead-generation site for local service businesses.",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

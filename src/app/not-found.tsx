@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { cta } from '@/content/site';
+import { brand, cta } from '@/content/site';
 import { LegalPage } from '@/components/legal/LegalPage';
 
 export const metadata: Metadata = { title: 'Page not found', robots: { index: false } };
@@ -8,7 +8,7 @@ export const metadata: Metadata = { title: 'Page not found', robots: { index: fa
 export default function NotFound() {
   return (
     <LegalPage title="This page doesn’t exist.">
-      <p>The link may be old or mistyped. Everything about the Local Growth System is on the home page.</p>
+      <p>The link may be old or mistyped. Everything about {brand.name} is on the home page.</p>
       <p className="flex flex-wrap gap-3 pt-2">
         <Link
           href="/"

@@ -9,7 +9,7 @@
 // ── Brand, contact & links ──────────────────────────────────────────────────
 
 export const brand = {
-  name: 'Local Growth System',
+  name: 'Arcline Growth',
   /** Short line used in the footer and structured data. */
   tagline: 'Online customer-acquisition systems for established local service businesses.',
   /** Shown in footer and used in schema markup. Leave a value empty to hide it. */
@@ -39,7 +39,7 @@ export const brand = {
 // ── SEO ─────────────────────────────────────────────────────────────────────
 
 export const seo = {
-  title: 'Local Growth System — Free Growth Audit for Local Service Businesses',
+  title: 'Arcline Growth — Free Growth Audit for Local Service Businesses',
   description:
     'Your business is better than your online presence makes it look. Short-form content, Google Business Profile, reviews, follow-up and website improvements for established local service businesses — $995/month, cancel anytime.',
   /** Fallback when NEXT_PUBLIC_SITE_URL is not set. */
@@ -116,7 +116,7 @@ export const problem = {
   closing: 'That’s the gap we fix.',
 } as const;
 
-// ── 4. The Local Growth System (features) ───────────────────────────────────
+// ── 4. What's included (features) ───────────────────────────────────────────
 
 export const system = {
   eyebrow: 'What’s included',
@@ -165,7 +165,7 @@ export const system = {
 
 export const pricing = {
   eyebrow: 'Pricing',
-  label: 'The Local Growth System',
+  label: 'Arcline Growth',
   price: '$995',
   period: '/month',
   /** Plain number used in schema markup. Keep in sync with `price`. */
@@ -272,7 +272,7 @@ export const positioning = {
   agencyIntro: 'Most agencies sell deliverables:',
   agencyDeliverables: ['“12 posts.”', '“4 reels.”', '“Google management.”'],
   approach:
-    'The Local Growth System starts somewhere else: finding where your business is currently losing potential customers — and fixing that first.',
+    'Arcline Growth starts somewhere else: finding where your business is currently losing potential customers — and fixing that first.',
   examples: [
     { problem: 'Not enough attention', fix: 'Improve content' },
     { problem: 'People visit but don’t contact the business', fix: 'Improve conversion' },
