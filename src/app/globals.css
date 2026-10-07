@@ -1,0 +1,141 @@
+@import 'tailwindcss';
+
+/* ── Design tokens ──────────────────────────────────────────────────────────
+   One accent (evergreen) on warm off-white and charcoal. Change the palette here;
+   every component reads these tokens through Tailwind (bg-canvas, text-accent…). */
+@theme {
+  --color-canvas: #faf8f4;
+  --color-sand: #f3efe7;
+  --color-surface: #ffffff;
+  --color-line: #e7e1d6;
+  --color-line-strong: #d6cfc2;
+  --color-ink: #1b1b19;
+  --color-ink-soft: #383732;
+  --color-muted: #615e57;
+  --color-accent: #1f5c46;
+  --color-accent-strong: #164535;
+  --color-accent-soft: #e8f1ec;
+  --color-accent-tint: #c9ddd1;
+  --color-night: #161815;
+  --color-night-soft: #23261f;
+  --color-gold: #c08a2d;
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-display: var(--font-inter-tight), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+  --shadow-soft: 0 1px 2px rgb(27 27 25 / 0.04), 0 8px 24px -12px rgb(27 27 25 / 0.12);
+  --shadow-lift: 0 2px 4px rgb(27 27 25 / 0.04), 0 24px 48px -20px rgb(27 27 25 / 0.22);
+  --shadow-float: 0 1px 2px rgb(27 27 25 / 0.06), 0 18px 40px -16px rgb(27 27 25 / 0.28);
+
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* Keeps anchored headings clear of the sticky header. */
+    scroll-padding-top: 5.5rem;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-canvas);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background: var(--color-accent-tint);
+    color: var(--color-ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+}
+
+/* ── Scroll reveal ──────────────────────────────────────────────────────────
+   Hidden only once JS has marked <html class="js">, so content never disappears
+   for a visitor without JavaScript. */
+html.js .reveal {
+  opacity: 0;
+  transform: translate3d(0, 18px, 0);
+  transition:
+    opacity 700ms var(--ease-out-soft),
+    transform 700ms var(--ease-out-soft);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+html.js .reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Before/after: the "after" list ticks in one item at a time. */
+html.js .tick-in {
+  opacity: 0;
+  transform: translate3d(-8px, 0, 0);
+  transition:
+    opacity 500ms var(--ease-out-soft),
+    transform 500ms var(--ease-out-soft);
+  transition-delay: var(--tick-delay, 0ms);
+}
+
+html.js .is-visible .tick-in {
+  opacity: 1;
+  transform: none;
+}
+
+html.js .fade-dim {
+  transition: opacity 900ms var(--ease-out-soft), filter 900ms var(--ease-out-soft);
+}
+
+html.js .is-visible .fade-dim {
+  opacity: 0.78;
+  filter: saturate(0.6);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  html.js .reveal,
+  html.js .tick-in,
+  html.js .fade-dim {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    transition: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
+
+/* Subtle paper grain for placeholder media frames. */
+.frame-hatch {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    rgb(27 27 25 / 0.035) 0 1px,
+    transparent 1px 10px
+  );
+}
