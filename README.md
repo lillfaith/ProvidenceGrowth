@@ -54,8 +54,18 @@ passes everything to the provider chosen by `NEXT_PUBLIC_LEAD_PROVIDER`:
 To support another backend, write an adapter in `src/lib/leads/providers.ts` and add it to the
 `switch`. Nothing else needs to change. A hidden honeypot field drops most bot submissions.
 
-**Before launch, switch off `demo`.** If a provider is missing its settings, the site logs an
-error and falls back to demo mode, which means leads are silently lost.
+**Locally**, with nothing set, the form runs in `demo` mode. **In a production build**, a missing
+or wrong setting makes the form show its error message (with your email) instead of a fake
+success, so a lead can never vanish silently. Only an explicit `demo` fakes success in production.
+
+### Formspree setup (the configured backend)
+
+1. Create a free account at formspree.io and add a new form. Confirm the email Formspree sends you.
+2. Copy the form's endpoint, `https://formspree.io/f/xxxxxxx`.
+3. In Netlify: Site configuration → Environment variables → add `NEXT_PUBLIC_LEAD_ENDPOINT`
+   with that URL (or just the `xxxxxxx` id). `netlify.toml` already sets the provider to
+   `formspree`. Redeploy.
+4. Submit the form on the live site once and check that the email arrives.
 
 Supabase table (insert-only for the public key):
 
@@ -115,7 +125,19 @@ src/
 Structured data: `ProfessionalService` (with the monthly offer) and `FAQPage` JSON-LD, built
 from the content file.
 
-## Deploying
+## Deploying (Netlify)
 
-Vercel: import the repository, add the env vars. Netlify and Cloudflare Pages work the same way. To deploy a plain folder of HTML, uncomment
-`output: 'export'` in `next.config.ts` and upload the generated `out/` directory.
+1. In Netlify: Add new site → Import an existing project → GitHub → this repository.
+   Netlify detects Next.js; `netlify.toml` sets the build command and Node version.
+2. Site configuration → Environment variables:
+   - `NEXT_PUBLIC_SITE_URL`: the public address, e.g. `https://arclinegrowth.com`
+   - `NEXT_PUBLIC_LEAD_ENDPOINT`: your Formspree form URL (see above)
+   - optional: `NEXT_PUBLIC_GA_ID`, `NEXT_PUBLIC_META_PIXEL_ID`
+3. Deploy. Every push to `main` redeploys automatically.
+4. Custom domain: Domain management → Add a domain. HTTPS is set up for you. Update
+   `NEXT_PUBLIC_SITE_URL` to match and redeploy.
+
+Environment variables starting with `NEXT_PUBLIC_` are baked in at build time, so redeploy
+after changing one.
+
+Vercel also works, but its free Hobby plan is for non-commercial use.

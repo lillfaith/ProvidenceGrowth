@@ -1,0 +1,9 @@
+# Netlify reads this on every deploy. Next.js is detected automatically.
+[build]
+  command = "npm run build"
+
+[build.environment]
+  NODE_VERSION = "22"
+  # Audit requests go to Formspree. Set NEXT_PUBLIC_LEAD_ENDPOINT to your form's
+  # URL (https://formspree.io/f/xxxxxxx) in Site configuration → Environment variables.
+  NEXT_PUBLIC_LEAD_PROVIDER = "formspree"
