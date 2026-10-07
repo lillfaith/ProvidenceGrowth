@@ -18,12 +18,14 @@ export function LegalPage({ title, updated, children }: { title: string; updated
         </Container>
       </header>
       <main id="main">
-        <Container className="max-w-3xl py-16 sm:py-24">
-          <h1 className="text-4xl font-semibold tracking-[-0.035em] sm:text-5xl">{title}</h1>
-          {updated ? <p className="mt-3 text-sm text-muted">Last updated {updated}</p> : null}
-          <div className="mt-10 space-y-6 leading-relaxed text-ink-soft [&_h2]:mt-10 [&_h2]:text-xl [&_h2]:font-semibold [&_h2]:tracking-[-0.02em] [&_h2]:text-ink [&_a]:font-medium [&_a]:text-accent [&_a]:underline [&_ul]:list-disc [&_ul]:space-y-2 [&_ul]:pl-5">
-            {children}
-          </div>
+        <Container className="py-16 sm:py-24">
+          <div className="max-w-3xl">
+            <h1 className="text-4xl font-semibold tracking-[-0.035em] sm:text-5xl">{title}</h1>
+            {updated ? <p className="mt-3 text-sm text-muted">Last updated {updated}</p> : null}
+            <div className="mt-10 space-y-6 leading-relaxed text-ink-soft [&_h2]:mt-10 [&_h2]:text-xl [&_h2]:font-semibold [&_h2]:tracking-[-0.02em] [&_h2]:text-ink [&_a]:font-medium [&_a]:text-accent [&_a]:underline [&_ul]:list-disc [&_ul]:space-y-2 [&_ul]:pl-5">
+              {children}
+            </div>
+            </div>
         </Container>
       </main>
       <SiteFooter showNav={false} />
